@@ -1,0 +1,87 @@
+{
+  "rules": [
+    {
+      "id": "RULE-001",
+      "name": "Announce at Start",
+      "severity": "required",
+      "enabled": true,
+      "description": "检查是否有 Announce at start 提示",
+      "check_pattern": "Announce at start",
+      "fix_template": "**Announce at start:** \"我正在使用 {skill_name} skill 来帮你...\""
+    },
+    {
+      "id": "RULE-002",
+      "name": "Metadata 完整性",
+      "severity": "required",
+      "enabled": true,
+      "description": "检查 metadata 配置是否完整（license, author, version 等）",
+      "required_fields": ["license", "metadata.author", "metadata.version", "metadata.domain", "metadata.role"],
+      "fix_template": "license: MIT\nmetadata:\n  author: Your Team\n  version: \"1.0.0\"\n  domain: your-domain\n  role: your-role\n  scope: your-scope\n  output-format: markdown"
+    },
+    {
+      "id": "RULE-003",
+      "name": "Overview 部分",
+      "severity": "required",
+      "enabled": true,
+      "description": "检查是否有 Overview 部分",
+      "check_pattern": "## Overview",
+      "fix_template": "## Overview\n\n使用此 skill 来...\n\n**Announce at start:** \"我正在使用 {skill_name} skill 来帮你...\""
+    },
+    {
+      "id": "RULE-004",
+      "name": "Description 完整性",
+      "severity": "required",
+      "enabled": true,
+      "description": "检查 description 是否包含功能和触发条件",
+      "keywords": ["调用", "当", "使用", "用于"],
+      "fix_template": "description: \"{skill_description}。调用此 skill 当 {trigger_condition}。\""
+    },
+    {
+      "id": "RULE-005",
+      "name": "文档结构",
+      "severity": "recommended",
+      "enabled": true,
+      "description": "检查文档结构是否完整",
+      "recommended_sections": ["## 配置选项", "## 使用示例", "## 最佳实践", "## 错误处理", "## 相关 Skill"],
+      "fix_template": "## 配置选项\n\n| 参数 | 类型 | 默认值 | 说明 |\n|------|------|--------|------|\n\n## 使用示例\n\n### 示例 1: 基本使用\n\n## 最佳实践\n\n1. \n\n## 错误处理\n\n- \n\n## 相关 Skill\n\n- "
+    },
+    {
+      "id": "RULE-006",
+      "name": "配置选项表格",
+      "severity": "recommended",
+      "enabled": true,
+      "description": "检查是否有配置选项表格",
+      "check_pattern": "\\| 参数 \\| 类型 \\| 默认值 \\| 说明 \\|",
+      "fix_template": "## 配置选项\n\n| 参数 | 类型 | 默认值 | 说明 |\n|------|------|--------|------|\n"
+    },
+    {
+      "id": "RULE-007",
+      "name": "使用示例",
+      "severity": "recommended",
+      "enabled": true,
+      "description": "检查是否有使用示例",
+      "check_pattern": "## 使用示例",
+      "fix_template": "## 使用示例\n\n### 示例 1: 基本使用\n\n**输入**:\n```\n```\n\n**输出**:\n```\n```\n"
+    },
+    {
+      "id": "RULE-008",
+      "name": "错误处理",
+      "severity": "recommended",
+      "enabled": true,
+      "description": "检查是否有错误处理部分",
+      "check_pattern": "## 错误处理",
+      "fix_template": "## 错误处理\n\n- **错误类型**: 处理说明\n"
+    },
+    {
+      "id": "RULE-009",
+      "name": "相关 Skill",
+      "severity": "recommended",
+      "enabled": true,
+      "description": "检查是否有相关 Skill 引用",
+      "check_pattern": "## 相关 Skill",
+      "fix_template": "## 相关 Skill\n\n- **skill-name**: 相关说明\n"
+    }
+  ],
+  "version": "1.0.0",
+  "last_updated": "2026-02-25"
+}
