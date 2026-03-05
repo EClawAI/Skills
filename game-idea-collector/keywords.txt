@@ -1,0 +1,68 @@
+# 游戏创意采集搜索关键词库
+# 每行一个关键词，支持中英文
+
+# 中文关键词
+创新游戏机制
+独立游戏创意
+手游玩法创新
+游戏设计亮点
+新颖游戏玩法
+独立游戏推荐
+游戏机制解析
+创意游戏合集
+游戏策划灵感
+小游戏创意
+休闲游戏创新
+解谜游戏设计
+动作游戏机制
+模拟游戏创意
+叙事游戏创新
+VR 游戏创意
+AR 游戏玩法
+多人游戏设计
+社交游戏创意
+放置游戏机制
+
+# 英文关键词
+indie game unique mechanics
+innovative gameplay ideas
+mobile game design innovation
+creative game mechanics
+indie game concepts 2024 2025
+unique gaming experiences
+game design patterns
+casual game ideas
+puzzle game mechanics
+hypercasual game concepts
+action game innovation
+RPG gameplay mechanics
+strategy game design
+simulation game ideas
+narrative game innovation
+VR game mechanics
+AR gaming experiences
+multiplayer game design
+social game mechanics
+idle game concepts
+
+# 平台特定关键词
+Steam 独立游戏
+TapTap 新品推荐
+App Store 精选游戏
+Google Play 独立游戏
+Switch 独立游戏
+PS 独立游戏
+Xbox Game Pass 独立游戏
+itch.io 热门游戏
+
+# 类型特定关键词
+roguelike 创新机制
+metroidvania 新设计
+deck builder 创意
+battle royale 新玩法
+survival game 创新
+city builder 新机制
+farming sim 创意
+dating sim 创新
+horror game 新设计
+racing game 创新
