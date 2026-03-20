@@ -1,0 +1,159 @@
+{
+  "skill": "project-tutorial-generator",
+  "version": "1.0",
+  "evals": [
+    {
+      "id": "trigger-with-project-path",
+      "description": "Skill should activate when user provides a project path and asks for tutorial generation",
+      "input": "帮我为 ~/Work/Lzw/GateDemo 项目生成一套学习教程",
+      "expected": {
+        "skill_triggered": true,
+        "announces_skill": true,
+        "asks_output_dir": true,
+        "scans_project": true
+      }
+    },
+    {
+      "id": "trigger-with-tutorial-keyword",
+      "description": "Skill should activate on tutorial/教程 related keywords with project context",
+      "input": "我想把 GateDemo 项目的开发过程整理成教程",
+      "expected": {
+        "skill_triggered": true,
+        "asks_project_path": true
+      }
+    },
+    {
+      "id": "phase0-project-scan",
+      "description": "Phase 0 should correctly detect project tech stack, git status, openspec status",
+      "input": "为 ~/Work/Lzw/GateDemo 生成教程，输出到 ~/Work/Lzw/GateDemo/tutorial/",
+      "expected": {
+        "detects_java": true,
+        "detects_spring_boot": true,
+        "detects_grpc": true,
+        "detects_openspec": true,
+        "detects_git": true,
+        "creates_context_md": true
+      }
+    },
+    {
+      "id": "phase1-audience-levels",
+      "description": "Phase 1 should generate project-specific audience levels, not generic beginner/intermediate/advanced",
+      "input": "(continues from phase0)",
+      "expected": {
+        "generates_3_to_5_levels": true,
+        "levels_mention_java": true,
+        "levels_mention_microservices_or_game": true,
+        "not_generic_beginner_intermediate_advanced": true,
+        "asks_user_to_select": true
+      }
+    },
+    {
+      "id": "phase2-openspec-mode",
+      "description": "Phase 2 should detect openspec and use rich information mode",
+      "input": "(continues with GateDemo which has openspec)",
+      "expected": {
+        "detects_openspec_mode": true,
+        "reads_archived_changes": true,
+        "extracts_from_proposals": true,
+        "records_to_context_md": true,
+        "does_not_ask_iteration_reasons": true
+      }
+    },
+    {
+      "id": "phase2-no-openspec-mode",
+      "description": "Phase 2 should fall back to interactive inquiry when no openspec",
+      "input": "为一个没有 openspec 的普通 Java 项目生成教程",
+      "expected": {
+        "detects_no_openspec": true,
+        "identifies_evolution_nodes_from_git": true,
+        "asks_user_about_each_node": true,
+        "allows_user_skip": true,
+        "ai_infers_when_skipped": true,
+        "marks_source_in_context_md": true
+      }
+    },
+    {
+      "id": "phase3-outline-preview",
+      "description": "Phase 3 should generate outline with 4-level detail",
+      "input": "(continues from phase2)",
+      "expected": {
+        "has_chapter_names": true,
+        "has_chapter_summaries": true,
+        "has_section_names": true,
+        "has_section_summaries": true,
+        "includes_chapter_0_overview": true,
+        "waits_for_user_confirmation": true
+      }
+    },
+    {
+      "id": "phase3-outline-modification",
+      "description": "Phase 3 should support outline modifications",
+      "input": "第3章太大了，认证和TLS分开讲",
+      "expected": {
+        "splits_chapter": true,
+        "renumbers_subsequent": true,
+        "presents_updated_outline": true,
+        "continues_waiting_for_confirmation": true
+      }
+    },
+    {
+      "id": "phase3-generation-mode-choice",
+      "description": "After outline confirmation, should ask for generation mode",
+      "input": "可以了，确认大纲",
+      "expected": {
+        "offers_batch_mode": true,
+        "offers_chapter_by_chapter_mode": true,
+        "records_final_outline_to_context": true
+      }
+    },
+    {
+      "id": "phase4-chapter-structure",
+      "description": "Generated chapters should follow the five-section structure",
+      "input": "(batch mode selected)",
+      "expected": {
+        "chapter_has_problem_intro": true,
+        "chapter_has_design_decision": true,
+        "chapter_has_core_implementation": true,
+        "chapter_has_evolution_review": true,
+        "chapter_has_extended_thinking": true,
+        "chapter_has_code_snippets_with_annotations": true,
+        "chapter_has_at_least_one_diagram": true,
+        "chapter_file_named_with_numeric_prefix": true
+      }
+    },
+    {
+      "id": "phase4-chapter-by-chapter-mode",
+      "description": "In chapter-by-chapter mode, should pause after each chapter",
+      "input": "(chapter-by-chapter mode selected)",
+      "expected": {
+        "pauses_after_chapter": true,
+        "offers_continue_rewrite_deeper_shallower": true,
+        "rewrites_when_requested": true
+      }
+    },
+    {
+      "id": "phase5-quality-check",
+      "description": "Phase 5 should perform quality checks and output summary",
+      "input": "(all chapters generated)",
+      "expected": {
+        "checks_structure_completeness": true,
+        "checks_terminology_consistency": true,
+        "outputs_completion_summary": true,
+        "summary_includes_chapter_count": true,
+        "summary_includes_reading_time": true
+      }
+    },
+    {
+      "id": "context-md-preserved",
+      "description": "context.md should be preserved in output directory after completion",
+      "input": "(tutorial complete)",
+      "expected": {
+        "context_md_exists_in_output_dir": true,
+        "context_md_has_project_info": true,
+        "context_md_has_audience_level": true,
+        "context_md_has_evolution_nodes": true,
+        "context_md_has_final_outline": true
+      }
+    }
+  ]
+}
